@@ -5,7 +5,7 @@
   "homepage":"https://luis16121013.github.io/svelte/",
   "scripts": {
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d public/build",
+    "deploy": "gh-pages -d public",
     "build": "rollup -c",
     "dev": "rollup -c -w",
     "start": "sirv public --host"
