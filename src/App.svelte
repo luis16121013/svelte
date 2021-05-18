@@ -5,11 +5,11 @@
 <main>
 	<h1>Unamad</h1>
 <div>
-	<Card urlImage="/licuadora-1.png"/>
-	<Card urlImage="/lavadora-1.png"/>
-	<Card urlImage="/plancha-1.jpg"/>
-	<Card urlImage="/licuadora-1.png"/>
-	<Card urlImage="/lavadora-1.png"/>
+	<Card urlImage="./licuadora-1.png"/>
+	<Card urlImage="./lavadora-1.png"/>
+	<Card urlImage="./plancha-1.jpg"/>
+	<Card urlImage="./licuadora-1.png"/>
+	<Card urlImage="./lavadora-1.png"/>
 </div>
 <h3>luis angel pfuño canales</h3>
 <p>My repository <a href="https://github.com/luis16121013">github</a> </p>
