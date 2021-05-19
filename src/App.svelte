@@ -1,15 +1,40 @@
 <script>
 	import Card from './components/Card.svelte'
+	let listProducts = [
+		{
+			tittleCard:"licuadora",
+			urlImage:"licuadora-2.jpg",
+		},
+		{
+			tittleCard:"lavadora",
+			urlImage:"lavadora-3.jpg",
+		},
+		{
+			tittleCard:"plancha",
+			urlImage:"plancha-2.jpg",
+		},
+		{
+			tittleCard:"laptop",
+			urlImage:"laptop-2.jpg",
+		},
+		{
+			tittleCard:"televisor",
+			urlImage:"televisor-2.jpg",
+		},
+		{
+			tittleCard:"ventilador",
+			urlImage:"ventilador-2.jpg",
+		},
+	]
+	console.log(listProducts)
 </script>
 
 <main>
 	<h1>Unamad</h1>
 <div>
-	<Card urlImage="./licuadora-1.png"/>
-	<Card urlImage="./lavadora-1.png"/>
-	<Card urlImage="./plancha-1.jpg"/>
-	<Card urlImage="./licuadora-1.png"/>
-	<Card urlImage="./lavadora-1.png"/>
+	{#each listProducts as p }
+	<Card {...p}/>
+	{/each}
 </div>
 <h3>luis angel pfuño canales</h3>
 <p>My repository <a href="https://github.com/luis16121013">github</a> </p>
