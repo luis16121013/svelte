@@ -1,39 +1,31 @@
 <script>
 	import Card from './components/Card.svelte'
-	let listProducts = [
-		{
-			tittleCard:"licuadora",
-			urlImage:"licuadora-2.jpg",
-		},
-		{
-			tittleCard:"lavadora",
-			urlImage:"lavadora-3.jpg",
-		},
-		{
-			tittleCard:"plancha",
-			urlImage:"plancha-2.jpg",
-		},
-		{
-			tittleCard:"laptop",
-			urlImage:"laptop-2.jpg",
-		},
-		{
-			tittleCard:"televisor",
-			urlImage:"televisor-2.jpg",
-		},
-		{
-			tittleCard:"ventilador",
-			urlImage:"ventilador-2.jpg",
-		},
-	]
-	console.log(listProducts)
+	import {listProducts} from './storage/Storage.js'
+
+	//adding product cant
+	const add=(position)=>{
+		listProducts[position].cant +=1 
+	}
+	//deleting product cant
+	const del=(position)=>{
+		if(listProducts[position].cant <= 0){
+			listProducts[position].cant = 0
+			return
+		}
+		listProducts[position].cant -=1 
+	}
+
 </script>
 
 <main>
 	<h1>Unamad</h1>
 <div>
-	{#each listProducts as p }
-	<Card {...p}/>
+	{#each listProducts as p ,id}
+		<Card 
+			eventAdd={()=>add(id)}
+			eventDel={()=>del(id)}
+			{...p}
+		/>
 	{/each}
 </div>
 <h3>luis angel pfuño canales</h3>
@@ -42,38 +34,38 @@
 </main>
 
 <style>
-main {
-text-align: center;
-padding: .2em;
-max-width: 400px;
-margin: 0 auto;
-border:1px solid orange;
-}
+	main {
+		text-align: center;
+		max-width: 400px;
+		margin: 0 auto;
+	}
 
-h1 {
-color: #ff3e00;
-text-transform: uppercase;
-font-size: 4em;
-font-weight: 100;
-}
-h3 {
-color: #ff3e00;
-}
-div {
-display:flex;
-border:1px solid red;
-flex-direction:column;
-flex-wrap:wrap;
-align-items:center;
-}
+	h1 {
+		color: #ff3e00;
+		text-transform: uppercase;
+		font-size: 4em;
+		font-weight: 300;
+	}
+	h3 {
+		color: #ff3e00;
+	}
+	div {
+		display:flex;
+		flex-direction:column;
+		flex-wrap:wrap;
+		align-items:center;
+	}
+	p{
+		margin-bottom:20px;
+	}
 
-@media (min-width: 640px) {
-main {
-	max-width: none;
-}
-div {
-	flex-direction:row;
-	justify-content:center;
-}
-}
+	@media (min-width: 640px) {
+		main {
+			max-width: none;
+		}
+		div {
+			flex-direction:row;
+			justify-content:center;
+		}
+	}
 </style>

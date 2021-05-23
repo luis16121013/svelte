@@ -1,0 +1,32 @@
+export let listProducts = [
+	{
+		tittleCard:"licuadora",
+		urlImage:"licuadora-2.jpg",
+		cant:0,
+	},
+	{
+		tittleCard:"lavadora",
+		urlImage:"lavadora-3.jpg",
+		cant:0,
+	},
+	{
+		tittleCard:"plancha",
+		urlImage:"plancha-2.jpg",
+		cant:0,
+	},
+	{
+		tittleCard:"laptop",
+		urlImage:"laptop-2.jpg",
+		cant:0,
+	},
+	{
+		tittleCard:"televisor",
+		urlImage:"televisor-2.jpg",
+		cant:0,
+	},
+	{
+		tittleCard:"ventilador",
+		urlImage:"ventilador-2.jpg",
+		cant:0,
+	},
+]

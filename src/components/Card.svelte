@@ -1,6 +1,14 @@
 <script>
+	import ContentCard from './ContentCard.svelte'
 	export let urlImage=""
 	export let tittleCard=""
+	export let cant=0
+
+	export let eventAdd
+	export let eventDel
+
+	$: btnBlock = cant>0?'':'blocked'
+	$: textDisable = cant>0?'':'offText'
 </script>
 <div class="container-card">
 	<p>{tittleCard}</p>
@@ -9,71 +17,113 @@
 			<img src={`./${urlImage}`} alt="img">
 		</div>
 		<div class="content-data">
-			<h3>Cantidad:</h3>
-			<h1>0</h1>
+			<h3 class={`${textDisable}`}>Cantidad:</h3>
+			<h1 class={`${textDisable}`}>{cant}</h1>
 		</div>
 	</div>
-	<button class="btn-add">Agregar</button>
-	<button class="btn-del">Quitar</button>
+	{#if cant !== 0}
+		<ContentCard />
+	{/if}
+	<button 
+		on:click={eventAdd}
+		class="btn-add">+1</button>
+	<button 
+		on:click={eventDel}
+		class={`btn-del ${btnBlock}`}
+	>-1</button>
 </div>
 
 <style>
-.container-card {
-min-width:320px;
-min-height:230px;
-border:1px solid peru;
-margin:4px;
-border-radius:5px;
-}
-p {
-padding:0;
-margin:2px;
-height:2em;
-line-height:2em;
-display:block;
-background-color:#fc5f2b;
-color:#fff;
-font-size:bold;
-text-transform:uppercase;
-border-radius:5px;
-}
-.content-card {
-	box-sizing:border-box;
-	display:flex;
-	width:100%;
-	height:140px;
-	border:1px solid cyan;
-	margin:6px 0;
-}
+	.container-card {
+		min-width:320px;
+		border:2px solid peru;
+		margin:4px;
+		border-radius:5px;
+		transition:0.7s;
+	}
+	.container-card:hover {
+		background: linear-gradient(to right,#ffba61,#ffe8bf);
+	}
+	p {
+		padding:0;
+		margin:2px;
+		height:2em;
+		line-height:2em;
+		display:block;
+		background-color:#fc5f2b;
+		color:#fff;
+		font-size:bold;
+		text-transform:uppercase;
+		border-radius:5px;
+	}
+	.content-card {
+		box-sizing:border-box;
+		display:flex;
+		width:100%;
+		height:120px;
+		margin:6px 0;
+	}
 
-img {
-width:130px;
-border-radius:20%;
-}
-.content-data {
-width:100%;
-color:#444;
-}
+	img {
+		width:110px;
+		height:110px;
+		padding-left:8px;
+		border-radius:50%;
+		transition:0.5s;
+	}
+	img:hover {
+		border-radius:20%;
+	}
+	.content-data {
+		width:100%;
+		color:#444;
+	}
+	h3 { margin:8px 0 0; }
+	h1 { line-height:20px; }
+	.offText {
+		color:#b3abab;
+	}
 
-button {
-margin:0;
-padding:0;
-width:40%;
-height:2em;
-color:#fff;
-font-weight:bold;
-border-radius:8px;
-}
-.btn-add{
-background-color:green;
-}
-.btn-del{
-background-color:red;
-}
-@media (min-width: 640px) {
-.container-card {
-	max-width:340px;
-}
-.content-card {
-}
+	button {
+		margin:10px 0;
+		padding:0;
+		width:40%;
+		height:2.5em;
+		color:#fff;
+		border-color:#fff;
+		font-weight:bold;
+		border-radius:25px;
+		margin-bottom:10px;
+		transition:.3s;
+	}
+	.btn-add{
+		background-color:#67db40;
+	}
+	.btn-del{
+		background-color:#ff7c3b;
+	}
+	.blocked {
+		background-color:#ffac70;
+		border-color:#fff;
+	}
+	.btn-add:hover{
+		background-color:#63d67f;
+		color:#333;
+		border-color:#333;
+	}
+	.btn-del:hover{
+		background-color:#ff7936;
+		color:#333;
+		border-color:#333;
+	}
+	.blocked:hover {
+		background-color:#ffac70;
+		color:#fff;
+		border-color:#fff;
+	}
+	@media (min-width: 640px) {
+		.container-card {
+			max-width:340px;
+		}
+	}
 </style>
