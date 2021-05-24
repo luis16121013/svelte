@@ -15,6 +15,36 @@
 		listProducts[position].cant -=1 
 	}
 
+	const IncrementDays=(p)=>listProducts[p].DaysUse++;
+	const IncrementTime=(p)=>listProducts[p].TimeUse++;
+	const DecrementDays=(p)=>{ 
+		let Day=listProducts[p].DaysUse
+		listProducts[p].DaysUse=validateDecrement(Day) 
+	}
+	const DecrementTime=(p)=>{ 
+		let time=listProducts[p].TimeUse
+		listProducts[p].TimeUse=validateDecrement(time) 
+	}
+	//funcion que valida el decremento no menor a 0
+	const validateDecrement=(number)=>number<=0?0:number-1
+
+	const ChangeNumberTime=(e,p)=>{
+		let number=e.target.value
+		number=replaceNumber(number)
+		if(number===0){
+			listProducts[p].TimeUse=0
+		}else{
+			listProducts[p].TimeUse=number
+		}
+	}
+	const ChangeNumberDay=(e,p)=>{
+		let number=e.target.value
+		listProducts[p].DaysUse=replaceNumber(number)*1
+	}
+	const replaceNumber=(number)=>{
+		let data=number.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');
+		return data
+	}
 </script>
 
 <main>
@@ -22,9 +52,16 @@
 <div>
 	{#each listProducts as p ,id}
 		<Card 
+			{...p}
 			eventAdd={()=>add(id)}
 			eventDel={()=>del(id)}
-			{...p}
+
+			IncrementTime={()=>IncrementTime(id)}
+			DecrementTime={()=>DecrementTime(id)}
+			IncrementDays={()=>IncrementDays(id)}
+			DecrementDays={()=>DecrementDays(id)}
+			ChangeNumberTime={(e)=>ChangeNumberTime(e,id)}
+			ChangeNumberDay={(e)=>ChangeNumberDay(e,id)}
 		/>
 	{/each}
 </div>

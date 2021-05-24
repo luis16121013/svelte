@@ -1,25 +1,31 @@
 <script>
 	export let TimeUse=0
 	export let DaysUse=0
-	const increment = () => {
-		console.log("increment")
-	}
-	const decrement = () => {
-		console.log("decrement")
-	}
+	export let IncrementTime
+	export let DecrementTime
+	export let IncrementDays
+	export let DecrementDays
+	export let ChangeNumberTime
+	export let ChangeNumberDay
 </script>
 <div class='content'>
 	<div>
 		<h3>Horas de uso diaria</h3>
-		<button on:click={increment}>+</button>
-		<input bind:value={TimeUse} type="text"/>
-		<button on:click={decrement}>-</button>
+		<button on:click={IncrementTime}>+</button>
+		<input id="timeId"
+			bind:value={TimeUse} 
+			on:input={ChangeNumberTime} 
+			type="text"/>
+		<button on:click={DecrementTime}>-</button>
 	</div>
 	<div>
 		<h3>Dias al mes</h3>
-		<button on:click={increment}>+</button>
-		<input bind:value={DaysUse} type="text"/>
-		<button on:click={decrement}>-</button>
+		<button on:click={IncrementDays}>+</button>
+		<input id="dayId"
+			bind:value={DaysUse}
+			on:input={ChangeNumberDay} 
+			type="text"/>
+		<button on:click={DecrementDays}>-</button>
 	</div>
 </div>
 

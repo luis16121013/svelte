@@ -3,13 +3,27 @@
 	export let urlImage=""
 	export let tittleCard=""
 	export let cant=0
+	export let TimeUse=0
+	export let DaysUse=0
 
 	export let eventAdd
 	export let eventDel
 
-	$: btnBlock = cant>0?'':'blocked'
-	$: textDisable = cant>0?'':'offText'
+	export let IncrementTime
+	export let DecrementTime
+	export let IncrementDays
+	export let DecrementDays
+	export let ChangeNumberTime
+	export let ChangeNumberDay
+
+	$: btnBlock = cant>0?'':'blocked';
+	$: textDisable = cant>0?'':'offText';
+	//$:if(cant==0){
+	//	TimeUse=0
+	//	TimeUse=0
+	//}
 </script>
+
 <div class="container-card">
 	<p>{tittleCard}</p>
 	<div class="content-card">
@@ -22,7 +36,16 @@
 		</div>
 	</div>
 	{#if cant !== 0}
-		<ContentCard />
+		<ContentCard 
+			TimeUse={TimeUse}
+			DaysUse={DaysUse}
+			IncrementTime={IncrementTime}
+			DecrementTime={DecrementTime}
+			IncrementDays={IncrementDays}
+			DecrementDays={DecrementDays}
+			ChangeNumberTime={ChangeNumberTime}
+			ChangeNumberDay={ChangeNumberDay}
+		/>
 	{/if}
 	<button 
 		on:click={eventAdd}
