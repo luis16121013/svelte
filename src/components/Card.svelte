@@ -62,7 +62,7 @@
 		border:2px solid peru;
 		margin:4px;
 		border-radius:5px;
-		transition:0.7s;
+		background: linear-gradient(to right,#fff,#ffe8bf);
 	}
 	.container-card:hover {
 		background: linear-gradient(to right,#ffba61,#ffe8bf);
