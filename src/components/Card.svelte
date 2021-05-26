@@ -5,6 +5,7 @@
 	export let cant=0
 	export let TimeUse=0
 	export let DaysUse=0
+	export let potencia=0
 
 	export let eventAdd
 	export let eventDel

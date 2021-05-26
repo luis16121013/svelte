@@ -1,7 +1,9 @@
 <script>
 	import Card from './components/Card.svelte'
 	import {listProducts} from './storage/Storage.js'
+	import ButtonReport from './components/ButtonReport.svelte'
 
+	$: Products=listProducts.filter(p=>p.cant>0)
 	//adding product cant
 	const add=(position)=>{
 		listProducts[position].cant +=1 
@@ -26,7 +28,7 @@
 		listProducts[p].TimeUse=validateDecrement(time) 
 	}
 	//funcion que valida el decremento no menor a 0
-	const validateDecrement=(number)=>number<=0?0:number-1
+	const validateDecrement=(number)=>number<=1?1:number-1
 
 	const ChangeNumberTime=(e,p)=>{
 		let number=e.target.value
@@ -45,12 +47,14 @@
 		let data=number.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');
 		return data
 	}
+
 </script>
 
 <main>
 	<h1>Unamad</h1>
+	<ButtonReport listProducts={Products} />
 <div>
-	{#each listProducts as p ,id}
+	{#each listProducts as p ,id (id)}
 		<Card 
 			{...p}
 			eventAdd={()=>add(id)}
